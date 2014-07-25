@@ -26,11 +26,23 @@ app.get('/v1/filters/:platform/', function (req, res){
 	});
 });
 
-
-
-app.get('/v1/search/:platform/:query', function (req, res){
+app.get('/v1/search/:query', function (req, res){
 	req.params.query = req.params.query.replace('+', '')
-	coolrom.searchRom(req.params.platform, req.params.query, function (err, roms) {
+	coolrom.searchRom(req.params.query, '', function (err, roms) {
+
+		if(err){
+			return res.send(500, {err: err});
+		}
+
+		res.send(roms);
+
+	});
+});
+
+
+app.get('/v1/search/:query/:platform', function (req, res){
+	req.params.query = req.params.query.replace('+', '')
+	coolrom.searchRom(req.params.query, req.params.platform, function (err, roms) {
 
 		if(err){
 			return res.send(500, {err: err});
