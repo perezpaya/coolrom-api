@@ -3,6 +3,6 @@
   "version": "0.0.1",
   "dependencies": {
     "express": "~4.6.1",
-    "coolrom": "0.0.1"
+    "coolrom": "0.0.2"
   }
 }
