@@ -70,18 +70,6 @@ app.get('/v1/roms/:platform/:filter', function (req, res){
 
 });
 
-app.get('/v1/rom/:id/:platform', function (req, res){
-	coolrom.getRomByIdAndPlatform(req.params.id, req.params.platform, function (err, rom){
-
-		if(err){
-			return res.send(500, {err: err});
-		}
-
-		res.send(rom);
-
-	});
-});
-
 app.get('/v1/rom/link/:id/', function (req, res){
 	coolrom.getRomDownloadLink(req.params.id, function (err, link){
 
@@ -90,6 +78,18 @@ app.get('/v1/rom/link/:id/', function (req, res){
 		}
 
 		res.send({link: link});
+
+	});
+});
+
+app.get('/v1/rom/:id/:platform', function (req, res){
+	coolrom.getRomByIdAndPlatform(req.params.id, req.params.platform, function (err, rom){
+
+		if(err){
+			return res.send(500, {err: err});
+		}
+
+		res.send(rom);
 
 	});
 });
