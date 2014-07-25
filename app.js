@@ -2,6 +2,10 @@ var express = require('express'),
 	coolrom = require('coolrom'),
 	app = express();
 
+app.get('/', function (req, res){
+	res.redirect('https://github.com/alexperezpaya/coolrom-api');
+});
+
 app.get('/v1/platforms/', function (req, res){
 	coolrom.getPlatforms(function (err, platforms) {
 
